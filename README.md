@@ -2,7 +2,8 @@
 ## Cuarta práctica IPC1 vacas
 El proyecto consiste en desarrollar un juego de escaleras y serpientes.
 ## Tablero
-Para crear el tablero deberá leer un archivo de texto con la siguiente información:
+Para crear el tablero deberá leer un archivo de texto con la siguiente información. 
+Donde lo que está entre parentesis deben de ser valores enteros:
 - tablero(filas,columnas);
 - pierdeturno(fila, columna);
 - tiradados(fila,columna);
@@ -10,7 +11,6 @@ Para crear el tablero deberá leer un archivo de texto con la siguiente informac
 - retrocede(fila, columna, cantPosiciones);
 - subida(filaInicial, columnaInicial, filaFinal, columnaFinal)
 - bajada(filaInicial, columnaInicial, filaFinal, columnaFinal)
-Donde lo que está entre parentesis deben de ser valores enteros
 
 ## Compilación con maven
 Se utiliza el archivo pom.xml y se ejecutan los comandos:
