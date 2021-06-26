@@ -1,5 +1,7 @@
 package com.mrojas.serpientes_escaleras.principal;
 
+import com.mrojas.serpientes_escaleras.ventanas.VentanaMenuInicio;
+
 /**
  * Esta clase contiene el main para que la aplicación pueda ejecutarse
  * 
@@ -7,7 +9,11 @@ package com.mrojas.serpientes_escaleras.principal;
  */
 public class Principal {
     public static void main(String[] args) {
-        Principal p = new Principal();
+        new Principal();
         System.out.println("Hola mundo!!!");
+    }
+
+    public Principal(){
+        new VentanaMenuInicio();
     }
 }
