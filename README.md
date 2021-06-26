@@ -15,6 +15,7 @@ Donde lo que está entre parentesis deben de ser valores enteros:
 ## Compilación con maven
 Se utiliza el archivo pom.xml y se ejecutan los comandos:
 ```
+mvn clean
 mvn compile
 mvn package
 ```
