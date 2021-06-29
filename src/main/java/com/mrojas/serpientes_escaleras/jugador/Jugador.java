@@ -1,5 +1,7 @@
 package com.mrojas.serpientes_escaleras.jugador;
 
+import java.io.Serializable;
+
 import com.mrojas.serpientes_escaleras.tablero.Ficha;
 
 /**
@@ -7,7 +9,7 @@ import com.mrojas.serpientes_escaleras.tablero.Ficha;
  * 
  * @author Manuel Rojas
  */
-public class Jugador {
+public class Jugador  implements Serializable{
     private int id, partiGanadas, partiPerdidas;
     private String nombre, apellido;
     private static int automaticIncrementID;
@@ -50,6 +52,10 @@ public class Jugador {
 
     public int getId() {
         return id;
+    }
+
+    public int getPartiTotal(){
+        return partiGanadas + partiPerdidas;
     }
 
     public int getPartiGanadas() {
