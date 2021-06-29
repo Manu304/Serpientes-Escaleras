@@ -1,5 +1,7 @@
 package com.mrojas.serpientes_escaleras.jugador;
 
+import com.mrojas.serpientes_escaleras.tablero.Ficha;
+
 /**
  * Esta clase contiene los metodos correspondientes al jugador.
  * 
@@ -9,6 +11,8 @@ public class Jugador {
     private int id, partiGanadas, partiPerdidas;
     private String nombre, apellido;
     private static int automaticIncrementID;
+    private Ficha ficha;
+    private int posAvanzadas;
 
     static {
         automaticIncrementID = 0;
@@ -25,6 +29,23 @@ public class Jugador {
         this.id = Jugador.getAutomaticIncrementID();
         this.partiGanadas = 0;
         this.partiPerdidas = 0;
+        this.posAvanzadas = 0;
+    }
+
+    public int getPosAvanzadas(){
+        return posAvanzadas;
+    }
+
+    public void setPosAvanzadas(int cantPosExtra){
+        this.posAvanzadas += cantPosExtra;
+    }
+
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
     }
 
     public int getId() {
