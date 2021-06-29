@@ -66,4 +66,8 @@ public class VectorJugador {
         jugadores.get(indice).setApellido(apellido);
     }
 
+    public int getSize(){
+        return jugadores.size();
+    }
+
 }
