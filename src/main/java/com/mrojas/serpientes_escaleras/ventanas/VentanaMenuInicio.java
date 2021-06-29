@@ -1,5 +1,7 @@
 package com.mrojas.serpientes_escaleras.ventanas;
 
+import com.mrojas.serpientes_escaleras.jugador.VectorJugador;
+import com.mrojas.serpientes_escaleras.ventanas.panel_jugadores.VentanaJugador;
 import javax.swing.ImageIcon;
 
 /**
@@ -9,8 +11,10 @@ import javax.swing.ImageIcon;
  * @author Manuel Rojas
  */
 public class VentanaMenuInicio extends javax.swing.JFrame {
-
+    
+    VectorJugador jugadores;
     public VentanaMenuInicio() {
+        jugadores = new VectorJugador();
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/images/snake.png")).getImage());
         setVisible(true);
@@ -37,15 +41,24 @@ public class VentanaMenuInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
-        setPreferredSize(new java.awt.Dimension(600, 600));
 
         botonJugar.setFont(new java.awt.Font("Poppins ExtraBold", 0, 24)); // NOI18N
         botonJugar.setText("NUEVA PARTIDA");
         botonJugar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonJugarActionPerformed(evt);
+            }
+        });
 
         botonJugadores.setFont(new java.awt.Font("Poppins ExtraBold", 0, 24)); // NOI18N
         botonJugadores.setText("JUGADORES");
         botonJugadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonJugadoresActionPerformed(evt);
+            }
+        });
 
         botonReportes.setFont(new java.awt.Font("Poppins ExtraBold", 0, 24)); // NOI18N
         botonReportes.setText("REPORTES");
@@ -131,7 +144,7 @@ public class VentanaMenuInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
-        // TODO add your handling code here:
+        new VentanaReportes(jugadores);
     }//GEN-LAST:event_botonReportesActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -141,6 +154,14 @@ public class VentanaMenuInicio extends javax.swing.JFrame {
     private void botonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_botonSalirMouseClicked
+
+    private void botonJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJugadoresActionPerformed
+        new VentanaJugador(jugadores);
+    }//GEN-LAST:event_botonJugadoresActionPerformed
+
+    private void botonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJugarActionPerformed
+        new VentanaPartida();
+    }//GEN-LAST:event_botonJugarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonJugadores;
