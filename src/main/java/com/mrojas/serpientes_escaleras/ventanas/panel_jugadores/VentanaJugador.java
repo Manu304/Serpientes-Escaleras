@@ -236,9 +236,7 @@ public class VentanaJugador extends javax.swing.JFrame {
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
         new VentanaRegistro(this);
-        if (jugadores.getSize() > 0) {
-            activarBotones(true);
-        }
+        activarBotones(true);
     }//GEN-LAST:event_botonRegistroActionPerformed
 
     private void jTableJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableJugadorMouseClicked
