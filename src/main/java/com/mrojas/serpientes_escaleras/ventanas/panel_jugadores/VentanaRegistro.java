@@ -1,21 +1,23 @@
 package com.mrojas.serpientes_escaleras.ventanas.panel_jugadores;
 
-import com.mrojas.serpientes_escaleras.jugador.Jugador;
+import javax.swing.ImageIcon;
 
 /**
+ * Clase encargada de registrar nuevos jugadores de manera interactiva con el usuario
  *
- * @author Manu
+ * @author Manuel Rojas
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 
-    VentanaJugador vent;
-    int indice = -1;
-    boolean editar = false;
+    private VentanaJugador vent;
+    private int indice = -1;
+    private boolean editar = false;
 
     public VentanaRegistro(VentanaJugador vent) {
         this.vent = vent;
         initComponents();
         setVisible(true);
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/snake.png")).getImage());
         setLocationRelativeTo(null);
     }
 

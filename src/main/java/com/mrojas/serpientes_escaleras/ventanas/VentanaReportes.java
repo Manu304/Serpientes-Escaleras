@@ -1,16 +1,20 @@
 package com.mrojas.serpientes_escaleras.ventanas;
 
+import javax.swing.*;
+
 import com.mrojas.serpientes_escaleras.jugador.VectorJugador;
 
 /**
+ * Clase encargada de mostrar el detalle de los datos de cada jugador en forma de tabla
  *
- * @author Manu
+ * @author Manuel Rojas
  */
 public class VentanaReportes extends javax.swing.JFrame {
 
     private VectorJugador jugadores;
     public VentanaReportes(VectorJugador jugadores) {
         initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/snake.png")).getImage());
         this.jugadores = jugadores;
         setVisible(true);
         setLocationRelativeTo(null);
@@ -114,7 +118,7 @@ public class VentanaReportes extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonVolverActionPerformed
 
-    public void actualizarTabla() {
+    private void actualizarTabla() {
         Object[][] datos = new Object[jugadores.getSize()][5];
 
         for (int i = 0; i < jugadores.getSize(); i++) {

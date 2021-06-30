@@ -17,8 +17,8 @@ public class PanelDados extends JPanel{
     public final ImageIcon CARA5 = new ImageIcon(getClass().getResource("/images/dadoCara5.png"));
     public final ImageIcon CARA6 = new ImageIcon(getClass().getResource("/images/dadoCara6.png"));
     
-    JLabel dado1, dado2;
-    JButton botonTirar;
+    private JLabel dado1, dado2;
+    private JButton botonTirar;
     public PanelDados(){
         setLayout(new BorderLayout());
         dado1 = new JLabel(ImagenStatic.getImagenDimensionada(CARA6, 100, 100));
@@ -29,7 +29,24 @@ public class PanelDados extends JPanel{
         add(dado2, BorderLayout.EAST);
         add(botonTirar, BorderLayout.SOUTH);
     }
+
+    public JButton getBotonTirar(){
+        return botonTirar;
+    }
     
+    public void cambiarDado(int cant1, int cant2){
+        cambiarDado(cant1, dado1);
+        cambiarDado(cant2, dado2);
+    }
     
-    
+    private void cambiarDado(int cara, JLabel dado){
+        switch(cara){
+            case 1 -> {dado.setIcon(ImagenStatic.getImagenDimensionada(CARA1, 100, 100));}
+            case 2 -> {dado.setIcon(ImagenStatic.getImagenDimensionada(CARA2, 100, 100));}
+            case 3 -> {dado.setIcon(ImagenStatic.getImagenDimensionada(CARA3, 100, 100));}
+            case 4 -> {dado.setIcon(ImagenStatic.getImagenDimensionada(CARA4, 100, 100));}
+            case 5 -> {dado.setIcon(ImagenStatic.getImagenDimensionada(CARA5, 100, 100));}
+            case 6 -> {dado.setIcon(ImagenStatic.getImagenDimensionada(CARA6, 100, 100));}
+        }
+    } 
 }

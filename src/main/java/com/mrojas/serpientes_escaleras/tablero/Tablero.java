@@ -6,11 +6,13 @@ import java.awt.*;
  * @author Manu
  */
 public class Tablero {
-    Casilla[][] casillasTablero;
-    int filas, columnas;
-    Casilla pierdeTurno, tiraDados, avanza,retrocede, subeIni, subeFin, bajaIni, bajaFin;
+    private Casilla[][] casillasTablero;
+    private int filas, columnas;
+    private Casilla pierdeTurno, tiraDados, avanza,retrocede, subeIni, subeFin, bajaIni, bajaFin;
 
     public Tablero(int filas, int columnas){
+        this.filas = filas;
+        this.columnas = columnas;
         casillasTablero = new Casilla[filas][columnas];
         this.generarTablero(new Color(154, 81, 237));
     }
@@ -73,7 +75,7 @@ public class Tablero {
 
     }
 
-    public void moverFicha(int filaIni, int columnaIni, int filaFin, int columnaFin){
+    private void moverFicha(int filaIni, int columnaIni, int filaFin, int columnaFin){
         casillasTablero[filaFin][columnaFin].setIcon(casillasTablero[filaIni][columnaIni].getIcon());
         casillasTablero[filaIni][columnaIni].setIcon(null);
     }
@@ -104,6 +106,14 @@ public class Tablero {
             }
         }
         return indices;
+    }
+
+    public int getFilas() {
+        return filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
     }
 
     /*

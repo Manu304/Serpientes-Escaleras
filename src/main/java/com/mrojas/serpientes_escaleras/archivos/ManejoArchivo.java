@@ -62,6 +62,7 @@ public class ManejoArchivo {
             jugadores = (ArrayList<Jugador>) in.readObject();
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El archivo seleccionado no es válido", "Archivo no valido", JOptionPane.ERROR_MESSAGE);
             jugadores = null;
         }
         return jugadores;

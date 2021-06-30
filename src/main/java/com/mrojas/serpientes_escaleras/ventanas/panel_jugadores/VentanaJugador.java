@@ -1,31 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mrojas.serpientes_escaleras.ventanas.panel_jugadores;
+
+import javax.swing.ImageIcon;
 
 import com.mrojas.serpientes_escaleras.archivos.ManejoArchivo;
 import com.mrojas.serpientes_escaleras.jugador.VectorJugador;
+import javax.swing.JOptionPane;
 
 /**
+ * Clase que se encarga de controlar el registro, edición, eliminación de
+ * jugadores Así como tambien el guardado de archivos y carga de datos de manera
+ * interactiva con el usuario
  *
- * @author Manu
+ * @author Manuel Rojas
  */
 public class VentanaJugador extends javax.swing.JFrame {
 
     private VectorJugador jugadores;
-    int fila = -1;
+    private int fila = -1;
 
     public VentanaJugador(VectorJugador jugadores) {
         initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/snake.png")).getImage());
         this.jugadores = jugadores;
+        if (jugadores.getSize() > 0) {
+            actualizarTabla();
+        } else {
+            activarBotones(false);
+        }
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
     public VectorJugador getJugadores() {
         return jugadores;
+    }
+
+    private void activarBotones(boolean activar) {
+        botonGuardar.setEnabled(activar);
+        botonEditar.setEnabled(activar);
+        botonEliminar.setEnabled(activar);
+
     }
 
     /**
@@ -222,6 +236,9 @@ public class VentanaJugador extends javax.swing.JFrame {
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
         new VentanaRegistro(this);
+        if (jugadores.getSize() > 0) {
+            activarBotones(true);
+        }
     }//GEN-LAST:event_botonRegistroActionPerformed
 
     private void jTableJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableJugadorMouseClicked
@@ -230,14 +247,26 @@ public class VentanaJugador extends javax.swing.JFrame {
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         if (fila > -1) {
-            jugadores.eliminarJugador(fila);
-            actualizarTabla();
+            int seguro = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar a " + jugadores.getJugador(fila) + "?", "Eliminar jugador", JOptionPane.YES_NO_OPTION);
+            if (seguro == 0) {
+                jugadores.eliminarJugador(fila);
+                actualizarTabla();
+            }
+            fila = -1;
+        } else {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún jugador", "Aviso", JOptionPane.ERROR_MESSAGE);
+        }
+        if (jugadores.getSize() < 1) {
+            activarBotones(false);
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         if (fila > -1) {
             new VentanaRegistro(fila, this);
+            fila = -1;
+        } else {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningún jugador", "Aviso", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonEditarActionPerformed
 

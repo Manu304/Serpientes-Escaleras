@@ -2,24 +2,28 @@ package com.mrojas.serpientes_escaleras.ventanas;
 
 import com.mrojas.serpientes_escaleras.jugador.VectorJugador;
 import com.mrojas.serpientes_escaleras.ventanas.panel_jugadores.VentanaJugador;
+import com.mrojas.serpientes_escaleras.ventanas.paneles_partida.VentanaSeleccion;
+
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
- * Esta clase sirve como primera comunicación con el usuario graficamente,
- * en ella se presenta el menú principal
+ * Esta clase sirve como primera comunicación con el usuario graficamente, en
+ * ella se presenta el menú principal
  *
  * @author Manuel Rojas
  */
 public class VentanaMenuInicio extends javax.swing.JFrame {
-    
+
     VectorJugador jugadores;
+
     public VentanaMenuInicio() {
         jugadores = new VectorJugador();
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/images/snake.png")).getImage());
         setVisible(true);
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -144,7 +148,12 @@ public class VentanaMenuInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
-        new VentanaReportes(jugadores);
+        if (jugadores.getSize() > 0) {
+            new VentanaReportes(jugadores);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay jugadores registrados para mostrar reportes", "Reportes", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_botonReportesActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -152,7 +161,10 @@ public class VentanaMenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseClicked
-        System.exit(0);
+        int salir = JOptionPane.showConfirmDialog(this, "¿Esta seguro que quiere salir?", "Salir", JOptionPane.YES_NO_OPTION);
+        if (salir == 0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_botonSalirMouseClicked
 
     private void botonJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJugadoresActionPerformed
@@ -160,7 +172,12 @@ public class VentanaMenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonJugadoresActionPerformed
 
     private void botonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJugarActionPerformed
-        new VentanaPartida();
+        if (jugadores.getSize() > 1) {
+            new VentanaSeleccion(jugadores);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay jugadores suficientes para una partida", "Nueva partida", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_botonJugarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
